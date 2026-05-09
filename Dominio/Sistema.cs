@@ -59,8 +59,27 @@ namespace Dominio
             _activos.Add(a);
         }
 
+        //TODO 4a
+        // public List<Persona> ListarPersonasYSusActivos()
+        // {
+        //     foreach(Persona p in _personas)
+        //     {
+                
+        //     }
+        // }
+    
+       public List<Incidente> ListarIncidentesPorPersona(Persona p)
+        {
+            List<Incidente> listaRetorno = new List<Incidente>();
+            foreach(Incidente i in _incidentes){
+                if(i.ActivoAfectado.Cuenta.Titular.Equals(p))
+                {
+                    listaRetorno.Add(i);
+                }
+            }
 
-
+            return listaRetorno;
+        }
 
 
 
