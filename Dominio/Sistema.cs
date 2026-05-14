@@ -59,28 +59,72 @@ namespace Dominio
             _activos.Add(a);
         }
 
-        //TODO 4a
-        // public List<Persona> ListarPersonasYSusActivos()
-        // {
-        //     foreach(Persona p in _personas)
-        //     {
-                
-        //     }
-        // }
-    
-       public List<Incidente> ListarIncidentesPorPersona(Persona p)
+
+
+
+        public List<Incidente> ListarIncidentesPorPersona(string ci)
         {
+            if (string.IsNullOrEmpty(ci))
+            {
+                throw new Exception("La cédula no puede ser vacía");
+            }
+            bool existe = false;
+            foreach (Persona p in _personas)
+            {
+                if (p.Cedula == ci)
+                {
+                    existe = true;
+                }
+            }
+            if (!existe)
+            {
+                throw new Exception("No existe una persona con esa cédula");
+            }
             List<Incidente> listaRetorno = new List<Incidente>();
-            foreach(Incidente i in _incidentes){
-                if(i.ActivoAfectado.Cuenta.Titular.Equals(p))
+            foreach (Incidente i in _incidentes)
+            {
+                if (i.ActivoAfectado.Cuenta.Titular.Cedula.Equals(ci))
                 {
                     listaRetorno.Add(i);
                 }
-            }
 
+            }
+            if (listaRetorno.Count == 0)
+            {
+                throw new Exception("La persona no tiene incidentes");
+            }
             return listaRetorno;
         }
 
+
+
+        public List<Activo> ObtenerActivosPorPersona(Persona p)
+        {
+            List<Activo> listaRet = new List<Activo>();
+            foreach (Activo a in _activos)
+            {
+                if (a.Cuenta.Titular.Equals(p))
+                {
+                    listaRet.Add(a);
+                }
+            }
+            return listaRet;
+        }
+
+        public Persona ObtenerPersonaPorCedula(String ci)
+        {
+            foreach (Persona p in _personas)
+            {
+                if (p.Cedula == ci)
+                {
+                    return p;
+                }
+
+            }
+            throw new Exception("No existe una persona con esa cédula");
+        }
+
+        
 
 
 
