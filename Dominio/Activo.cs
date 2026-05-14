@@ -24,6 +24,11 @@
         }
 
 
+ public override string ToString()
+        {
+            return $"{Nombre}, {Tipo} ";
+        }
+
 
     }
 }

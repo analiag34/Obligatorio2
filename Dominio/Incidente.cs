@@ -26,5 +26,13 @@ namespace Dominio
             FechaReportado = fechaReportado;
             Impacto = impacto;
         }
+
+        public override string ToString()
+        {
+            return $"Activo Afectado: {ActivoAfectado}, Estado: {Estado}, descripcion: {Descripcion}, fecha de reporte: {FechaReportado}";
+        }
+
+            
+
     }
 }
