@@ -29,6 +29,11 @@ namespace UIAppObligatorio
 
                             List<Activo> activosPersona = s.ObtenerActivosPorPersona(p);
 
+                            if(activosPersona.Count == 0)
+                            {
+                                Console.WriteLine("sin activos");
+                            }
+
                             foreach (Activo a in activosPersona)
                             {
                                 Console.WriteLine(a);
@@ -42,7 +47,8 @@ namespace UIAppObligatorio
                         Console.WriteLine("Ingrese la cedula de la persona");
                         string ciPersona = Console.ReadLine();
                         List<Incidente> incidentesPersona = s.ListarIncidentesPorPersona(ciPersona);
-                        Console.WriteLine("Incidentes:");
+                        Persona persona = s.ObtenerPersonaPorCedula(ciPersona);
+                        Console.WriteLine($"Incidentes de {persona.Nombre}:");
                         foreach (Incidente i in incidentesPersona)
                         {
                             Console.WriteLine(i);
