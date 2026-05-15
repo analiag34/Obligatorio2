@@ -27,10 +27,9 @@ namespace Dominio
             Impacto = impacto;
         }
 
-        public override string ToString()
-        {
-            return $"Activo Afectado: {ActivoAfectado}, Estado: {Estado}, descripcion: {Descripcion}, fecha de reporte: {FechaReportado}";
-        }
+        public abstract override string ToString();
+       
+       public abstract void ValidarIncidente();
 
             
 
