@@ -48,5 +48,6 @@ namespace Dominio
             return obj is Persona persona &&
                    Cedula == persona.Cedula;
         }
+        
     }
 }
