@@ -21,7 +21,7 @@ namespace Dominio
              return $"Incidente Ransomware: \n- Activo Afectado: {ActivoAfectado}\n - Estado: {Estado}\n- Descripcion: {Descripcion}\n- Fecha de reporte: {FechaReportado}\n- Datos Encriptados: {DatosEncriptados}\n- Exfiltracion: {Exfiltracion}";
         }
 
-         public override void ValidarIncidente()
+         public override void Validar()
         {
             if (string.IsNullOrEmpty(Descripcion))
             {

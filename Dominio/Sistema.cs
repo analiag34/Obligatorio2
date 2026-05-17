@@ -1,12 +1,9 @@
 ﻿using System;
-<<<<<<< HEAD
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Diagnostics;
-=======
 using System.Collections.Generic;
->>>>>>> 80bf87d29c89ac8e929b24dcaab86d01c1ea3e54
 using System.Security.Cryptography;
 using System.Text;
 
@@ -15,49 +12,18 @@ namespace Dominio
     public class Sistema
     {
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 80bf87d29c89ac8e929b24dcaab86d01c1ea3e54
         private List<Persona> _personas = new List<Persona>();
         private List<Incidente> _incidentes = new List<Incidente>();
         private List<Cuenta> _cuentas = new List<Cuenta>();
         private List<Activo> _activos = new List<Activo>();
 
-<<<<<<< HEAD
         public Sistema()
         {
 
             Precargar();
         }
 
-=======
 
-        public Sistema()
-        {
-            PrecargarDatos();
-        }
-
-        public void PrecargarDatos()
-        {
-            Persona p1 = new Persona("ame123", "america", "61566899", "098768765", "ame223@gmail.com");
-            AltaPersona(p1);
-            Persona p2 = new Persona("jose22", "jose perez", "8920009", "098768763", "jose@gmail.com");
-            AltaPersona(p2);
-            Cuenta cuenta1 = new Cuenta(true, p1, new DateTime(2026, 05, 10));
-            AltaCuenta(cuenta1);
-            Activo activo1 = new Activo(cuenta1, TipoActivo.PC, 4,"dell", false);
-            AltaActivo(activo1);
-            Activo activo2 = new Activo(cuenta1, TipoActivo.MOVIL, 4, "appple", false);
-            AltaActivo(activo2);
-            Incidente incidente1 = new Phishing(Estado.EN_ANALISIS, "hubo un hacker", 4, activo1, new DateTime(2025, 12, 30), 3, "canal usado", true, true);
-            AltaIncidente(incidente1);
-             Incidente incidente2 = new Ransomware(Estado.CERRADO, "hubo un hacker", 4, activo2, new DateTime(2025, 12, 30), 4, false, true);
-            AltaIncidente(incidente2);
-
-
-        }
->>>>>>> 80bf87d29c89ac8e929b24dcaab86d01c1ea3e54
 
         public List<Persona> GetPersonas()
         {
@@ -82,15 +48,11 @@ namespace Dominio
         //el nombre no puede ser vacío y el email debe contener el símbolo “@”.
         public void AltaPersona(Persona p)
         {
-<<<<<<< HEAD
-            p.Validar();
-=======
             if(p is null)
             {
                 throw new Exception("Debe ingresar una persona");
             }
-            p.ValidarPersona();
->>>>>>> 80bf87d29c89ac8e929b24dcaab86d01c1ea3e54
+            p.Validar();
             if (_personas.Contains(p))
             {
                 throw new Exception("ya existe");
@@ -100,35 +62,31 @@ namespace Dominio
 
         public void AltaCuenta(Cuenta c)
         {
-<<<<<<< HEAD
-
-=======
             if(c is null)
             {
                    throw new Exception("Debe ingresar una cuenta");
             }
             c.Validar();
->>>>>>> 80bf87d29c89ac8e929b24dcaab86d01c1ea3e54
             _cuentas.Add(c);
         }
 
         public void AltaIncidente(Incidente i)
         {
-<<<<<<< HEAD
-            i.Validar();
-=======
             if(i is null)
             {
                 throw new Exception("Debe ingresar un incidente");
             }
-            i.ValidarIncidente();
->>>>>>> 80bf87d29c89ac8e929b24dcaab86d01c1ea3e54
+            i.Validar();
             _incidentes.Add(i);
         }
 
         public void AltaActivo(Activo a)
         {
-<<<<<<< HEAD
+            if(a is null)
+            {
+                throw new Exception("Debe ingresar un incidente");
+            }
+            a.Validar();
             _activos.Add(a);
         }
 
@@ -147,65 +105,12 @@ namespace Dominio
 
         }
 
-=======
-             if(a is null)
-            {
-                throw new Exception("Debe ingresar un activo");
-            }
-            a.ValidarActivo();
-            _activos.Add(a);
-        }
-
-
-
-
-        public List<Incidente> ListarIncidentesPorPersona(string ci)
-        {
-            if (string.IsNullOrEmpty(ci))
-            {
-                throw new Exception("La cédula no puede ser vacía");
-            }
-            bool existe = false;
-            foreach (Persona p in _personas)
-            {
-                if (p.Cedula == ci)
-                {
-                    existe = true;
-                }
-            }
-            if (!existe)
-            {
-                throw new Exception("No existe una persona con esa cédula");
-            }
-            List<Incidente> listaRetorno = new List<Incidente>();
-            foreach (Incidente i in _incidentes)
-            {
-                if (i.ActivoAfectado.Cuenta.Titular.Cedula.Equals(ci))
-                {
-                    listaRetorno.Add(i);
-                }
-
-            }
-            if (listaRetorno.Count == 0)
-            {
-                throw new Exception("La persona no tiene incidentes");
-            }
-            return listaRetorno;
-        }
-
-
-
->>>>>>> 80bf87d29c89ac8e929b24dcaab86d01c1ea3e54
         public List<Activo> ObtenerActivosPorPersona(Persona p)
         {
             List<Activo> listaRet = new List<Activo>();
             foreach (Activo a in _activos)
             {
-<<<<<<< HEAD
-                if (a.Cuenta.Titular.Cedula == p.Cedula)
-=======
                 if (a.Cuenta.Titular.Equals(p))
->>>>>>> 80bf87d29c89ac8e929b24dcaab86d01c1ea3e54
                 {
                     listaRet.Add(a);
                 }
@@ -213,10 +118,6 @@ namespace Dominio
             return listaRet;
         }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 80bf87d29c89ac8e929b24dcaab86d01c1ea3e54
         public Persona ObtenerPersonaPorCedula(String ci)
         {
             foreach (Persona p in _personas)
@@ -227,7 +128,6 @@ namespace Dominio
                 }
 
             }
-<<<<<<< HEAD
             throw new Exception("No existe una persona con esa cedula");
 
 
@@ -354,49 +254,49 @@ namespace Dominio
 
             //ALTAS DE ACTIVO
 
-            Activo a1 = new Activo(c1, TipoActivo.PC, 4, "PC0001", "Laptop Desarrollo", true);
+            Activo a1 = new Activo(c1, TipoActivo.PC, 4, "Laptop Desarrollo", true);
             AltaActivo(a1);
 
-            Activo a2 = new Activo(c2, TipoActivo.SERVER, 5, "SERVER0002", "Servidor Web 01", true);
+            Activo a2 = new Activo(c2, TipoActivo.SERVER, 5, "Servidor Web 01", true);
             AltaActivo(a2);
 
-            Activo a3 = new Activo(c3, TipoActivo.MOVIL, 3, "MOVIL0003", "iPhone Gerencia", false);
+            Activo a3 = new Activo(c3, TipoActivo.MOVIL, 3,"iPhone Gerencia", false);
             AltaActivo(a3);
 
-            Activo a4 = new Activo(c4, TipoActivo.PC, 2, "PC0004", "PC Recepción", true);
+            Activo a4 = new Activo(c4, TipoActivo.PC, 2, "PC Recepción", true);
             AltaActivo(a4);
 
-            Activo a5 = new Activo(c5, TipoActivo.SERVER, 5, "SERVER0005", "Servidor Base Datos", true);
+            Activo a5 = new Activo(c5, TipoActivo.SERVER, 5, "Servidor Base Datos", true);
             AltaActivo(a5);
 
-            Activo a6 = new Activo(c6, TipoActivo.MOVIL, 1, "MOVIL0006", "Tablet Depósito", false);
+            Activo a6 = new Activo(c6, TipoActivo.MOVIL, 1, "Tablet Depósito", false);
             AltaActivo(a6);
 
-            Activo a7 = new Activo(c7, TipoActivo.PC, 4, "PC0007", "Workstation Diseño", true);
+            Activo a7 = new Activo(c7, TipoActivo.PC, 4, "Workstation Diseño", true);
             AltaActivo(a7);
 
-            Activo a8 = new Activo(c8, TipoActivo.SERVER, 5, "SERVER0008", "Servidor Correo", true);
+            Activo a8 = new Activo(c8, TipoActivo.SERVER, 5, "Servidor Correo", true);
             AltaActivo(a8);
 
-            Activo a9 = new Activo(c9, TipoActivo.MOVIL, 2, "MOVIL0009", "Android Ventas", false);
+            Activo a9 = new Activo(c9, TipoActivo.MOVIL, 2, "Android Ventas", false);
             AltaActivo(a9);
 
-            Activo a10 = new Activo(c10, TipoActivo.PC, 3, "PC0010", "PC RRHH", true);
+            Activo a10 = new Activo(c10, TipoActivo.PC, 3,  "PC RRHH", true);
             AltaActivo(a10);
 
-            Activo a11 = new Activo(c11, TipoActivo.SERVER, 5, "SERVER0011", "Servidor Backup", false);
+            Activo a11 = new Activo(c11, TipoActivo.SERVER, 5,  "Servidor Backup", false);
             AltaActivo(a11);
 
-            Activo a12 = new Activo(c12, TipoActivo.PC, 3, "PC0012", "Laptop Soporte", true);
+            Activo a12 = new Activo(c12, TipoActivo.PC, 3,  "Laptop Soporte", true);
             AltaActivo(a12);
 
-            Activo a13 = new Activo(c1, TipoActivo.MOVIL, 4, "MOVIL0013", "iPad Directivo", false);
+            Activo a13 = new Activo(c1, TipoActivo.MOVIL, 4,  "iPad Directivo", false);
             AltaActivo(a13);
 
-            Activo a14 = new Activo(c2, TipoActivo.PC, 1, "PC0014", "PC Pasante", true);
+            Activo a14 = new Activo(c2, TipoActivo.PC, 1,  "PC Pasante", true);
             AltaActivo(a14);
 
-            Activo a15 = new Activo(c3, TipoActivo.SERVER, 5, "SERVER0015", "Servidor VPN", true);
+            Activo a15 = new Activo(c3, TipoActivo.SERVER, 5, "Servidor VPN", true);
             AltaActivo(a15);
 
             //ALTA INCIDENTE
@@ -510,14 +410,3 @@ namespace Dominio
 
     }
 }
-=======
-            throw new Exception("No existe una persona con esa cédula");
-        }
-
-
-  ///TODO IValidable
-
-
-    }
-}
->>>>>>> 80bf87d29c89ac8e929b24dcaab86d01c1ea3e54

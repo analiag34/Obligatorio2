@@ -2,16 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-<<<<<<< HEAD
 
 namespace Dominio
 {
     public class Persona : IValidar
-=======
-namespace Dominio
-{
-    public class Persona
->>>>>>> 80bf87d29c89ac8e929b24dcaab86d01c1ea3e54
     {
 
 
@@ -33,7 +27,6 @@ namespace Dominio
             Email = email;
         }
 
-<<<<<<< HEAD
         public void Validar()
         {
             if (string.IsNullOrEmpty(Nombre))
@@ -50,29 +43,10 @@ namespace Dominio
 
 
 
-=======
-
-        public void ValidarPersona()
-        {
-            if (string.IsNullOrEmpty(Nombre)){
-                throw new Exception("Nombre vacio");
-            }
-            if (!Email.Contains("@")){
-                throw new Exception("mail invalido");
-            }
-             
-        }
-
->>>>>>> 80bf87d29c89ac8e929b24dcaab86d01c1ea3e54
         public override bool Equals(object? obj)
         {
             return obj is Persona persona &&
                    Cedula == persona.Cedula;
         }
-<<<<<<< HEAD
-=======
-
-       
->>>>>>> 80bf87d29c89ac8e929b24dcaab86d01c1ea3e54
     }
 }

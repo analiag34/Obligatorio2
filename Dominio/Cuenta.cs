@@ -21,9 +21,6 @@ namespace Dominio
             FechaUltCambioPass = fechaUltCambioPass;
         }
 
-<<<<<<< HEAD
-
-=======
         public void Validar()
         {
             if(Titular is null)
@@ -31,7 +28,6 @@ namespace Dominio
                 throw new Exception("Debe ingresar una persona como titular");
             }
         }
->>>>>>> 80bf87d29c89ac8e929b24dcaab86d01c1ea3e54
 
 
 

@@ -1,6 +1,6 @@
 ﻿namespace Dominio
 {
-    public class Activo
+    public class Activo: IValidar
     {
 
         private static int UltimoId { get; set; } = 1;
@@ -12,37 +12,24 @@
         public string Nombre { get; set; }
         public bool Backup { get; set; }
 
-<<<<<<< HEAD
-        public Activo(Cuenta cuenta, TipoActivo tipo, int criticidad, string codigo, string nombre, bool backup)
-=======
         public Activo(Cuenta cuenta, TipoActivo tipo, int criticidad, string nombre, bool backup)
->>>>>>> 80bf87d29c89ac8e929b24dcaab86d01c1ea3e54
         {
             Id = UltimoId++;
             Cuenta = cuenta;
             Tipo = tipo;
             Criticidad = criticidad;
-<<<<<<< HEAD
-            Codigo = codigo;
-=======
             Codigo = tipo.ToString().ToUpper() + Id.ToString("D4");
->>>>>>> 80bf87d29c89ac8e929b24dcaab86d01c1ea3e54
             Nombre = nombre;
             Backup = backup;
         }
 
-<<<<<<< HEAD
-        public override string ToString()
-        {
-            return $"{Cuenta.Titular.Nombre} - {Nombre} - {Tipo}";
-=======
 
         public override string ToString()
         {
             return $"{Nombre}, {Tipo}, {Codigo} ";
         }
 
-        public void ValidarActivo()
+        public void Validar()
         {
             if (Cuenta is null)
             {
@@ -56,7 +43,6 @@
             {
                 throw new Exception("La criticidad debe ser un valor entre 1 y 5");
             }
->>>>>>> 80bf87d29c89ac8e929b24dcaab86d01c1ea3e54
         }
 
 

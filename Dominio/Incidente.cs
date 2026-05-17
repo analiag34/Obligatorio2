@@ -4,11 +4,7 @@ using System.Text;
 
 namespace Dominio
 {
-<<<<<<< HEAD
     public abstract class Incidente : IValidar
-=======
-    public abstract class Incidente
->>>>>>> 80bf87d29c89ac8e929b24dcaab86d01c1ea3e54
     {
 
         private static int UltimoId { get; set; } = 1;
@@ -31,8 +27,12 @@ namespace Dominio
             Impacto = impacto;
         }
 
-<<<<<<< HEAD
-        public virtual void Validar()
+        public abstract override string ToString();
+       
+       public abstract void Validar();
+
+           
+       /* public virtual void Validar()
         {
             if (string.IsNullOrEmpty(Descripcion))
             {
@@ -53,14 +53,7 @@ namespace Dominio
             {
                 throw new Exception("Debe existir un activo afectado");
             }
-        }
-=======
-        public abstract override string ToString();
-       
-       public abstract void ValidarIncidente();
+        }*/
 
-            
-
->>>>>>> 80bf87d29c89ac8e929b24dcaab86d01c1ea3e54
     }
 }
