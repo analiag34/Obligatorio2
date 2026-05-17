@@ -1,8 +1,12 @@
 ﻿using System;
+<<<<<<< HEAD
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Diagnostics;
+=======
+using System.Collections.Generic;
+>>>>>>> 80bf87d29c89ac8e929b24dcaab86d01c1ea3e54
 using System.Security.Cryptography;
 using System.Text;
 
@@ -11,18 +15,49 @@ namespace Dominio
     public class Sistema
     {
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 80bf87d29c89ac8e929b24dcaab86d01c1ea3e54
         private List<Persona> _personas = new List<Persona>();
         private List<Incidente> _incidentes = new List<Incidente>();
         private List<Cuenta> _cuentas = new List<Cuenta>();
         private List<Activo> _activos = new List<Activo>();
 
+<<<<<<< HEAD
         public Sistema()
         {
 
             Precargar();
         }
 
+=======
+
+        public Sistema()
+        {
+            PrecargarDatos();
+        }
+
+        public void PrecargarDatos()
+        {
+            Persona p1 = new Persona("ame123", "america", "61566899", "098768765", "ame223@gmail.com");
+            AltaPersona(p1);
+            Persona p2 = new Persona("jose22", "jose perez", "8920009", "098768763", "jose@gmail.com");
+            AltaPersona(p2);
+            Cuenta cuenta1 = new Cuenta(true, p1, new DateTime(2026, 05, 10));
+            AltaCuenta(cuenta1);
+            Activo activo1 = new Activo(cuenta1, TipoActivo.PC, 4,"dell", false);
+            AltaActivo(activo1);
+            Activo activo2 = new Activo(cuenta1, TipoActivo.MOVIL, 4, "appple", false);
+            AltaActivo(activo2);
+            Incidente incidente1 = new Phishing(Estado.EN_ANALISIS, "hubo un hacker", 4, activo1, new DateTime(2025, 12, 30), 3, "canal usado", true, true);
+            AltaIncidente(incidente1);
+             Incidente incidente2 = new Ransomware(Estado.CERRADO, "hubo un hacker", 4, activo2, new DateTime(2025, 12, 30), 4, false, true);
+            AltaIncidente(incidente2);
+
+
+        }
+>>>>>>> 80bf87d29c89ac8e929b24dcaab86d01c1ea3e54
 
         public List<Persona> GetPersonas()
         {
@@ -47,7 +82,15 @@ namespace Dominio
         //el nombre no puede ser vacío y el email debe contener el símbolo “@”.
         public void AltaPersona(Persona p)
         {
+<<<<<<< HEAD
             p.Validar();
+=======
+            if(p is null)
+            {
+                throw new Exception("Debe ingresar una persona");
+            }
+            p.ValidarPersona();
+>>>>>>> 80bf87d29c89ac8e929b24dcaab86d01c1ea3e54
             if (_personas.Contains(p))
             {
                 throw new Exception("ya existe");
@@ -57,18 +100,35 @@ namespace Dominio
 
         public void AltaCuenta(Cuenta c)
         {
+<<<<<<< HEAD
 
+=======
+            if(c is null)
+            {
+                   throw new Exception("Debe ingresar una cuenta");
+            }
+            c.Validar();
+>>>>>>> 80bf87d29c89ac8e929b24dcaab86d01c1ea3e54
             _cuentas.Add(c);
         }
 
         public void AltaIncidente(Incidente i)
         {
+<<<<<<< HEAD
             i.Validar();
+=======
+            if(i is null)
+            {
+                throw new Exception("Debe ingresar un incidente");
+            }
+            i.ValidarIncidente();
+>>>>>>> 80bf87d29c89ac8e929b24dcaab86d01c1ea3e54
             _incidentes.Add(i);
         }
 
         public void AltaActivo(Activo a)
         {
+<<<<<<< HEAD
             _activos.Add(a);
         }
 
@@ -87,12 +147,65 @@ namespace Dominio
 
         }
 
+=======
+             if(a is null)
+            {
+                throw new Exception("Debe ingresar un activo");
+            }
+            a.ValidarActivo();
+            _activos.Add(a);
+        }
+
+
+
+
+        public List<Incidente> ListarIncidentesPorPersona(string ci)
+        {
+            if (string.IsNullOrEmpty(ci))
+            {
+                throw new Exception("La cédula no puede ser vacía");
+            }
+            bool existe = false;
+            foreach (Persona p in _personas)
+            {
+                if (p.Cedula == ci)
+                {
+                    existe = true;
+                }
+            }
+            if (!existe)
+            {
+                throw new Exception("No existe una persona con esa cédula");
+            }
+            List<Incidente> listaRetorno = new List<Incidente>();
+            foreach (Incidente i in _incidentes)
+            {
+                if (i.ActivoAfectado.Cuenta.Titular.Cedula.Equals(ci))
+                {
+                    listaRetorno.Add(i);
+                }
+
+            }
+            if (listaRetorno.Count == 0)
+            {
+                throw new Exception("La persona no tiene incidentes");
+            }
+            return listaRetorno;
+        }
+
+
+
+>>>>>>> 80bf87d29c89ac8e929b24dcaab86d01c1ea3e54
         public List<Activo> ObtenerActivosPorPersona(Persona p)
         {
             List<Activo> listaRet = new List<Activo>();
             foreach (Activo a in _activos)
             {
+<<<<<<< HEAD
                 if (a.Cuenta.Titular.Cedula == p.Cedula)
+=======
+                if (a.Cuenta.Titular.Equals(p))
+>>>>>>> 80bf87d29c89ac8e929b24dcaab86d01c1ea3e54
                 {
                     listaRet.Add(a);
                 }
@@ -100,7 +213,10 @@ namespace Dominio
             return listaRet;
         }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 80bf87d29c89ac8e929b24dcaab86d01c1ea3e54
         public Persona ObtenerPersonaPorCedula(String ci)
         {
             foreach (Persona p in _personas)
@@ -111,6 +227,7 @@ namespace Dominio
                 }
 
             }
+<<<<<<< HEAD
             throw new Exception("No existe una persona con esa cedula");
 
 
@@ -393,3 +510,14 @@ namespace Dominio
 
     }
 }
+=======
+            throw new Exception("No existe una persona con esa cédula");
+        }
+
+
+  ///TODO IValidable
+
+
+    }
+}
+>>>>>>> 80bf87d29c89ac8e929b24dcaab86d01c1ea3e54
