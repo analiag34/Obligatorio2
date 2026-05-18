@@ -38,6 +38,20 @@ namespace Dominio
                 throw new Exception("mail vacio o invalido");
             }
 
+            if (string.IsNullOrEmpty(Cedula))
+            {
+                throw new Exception("Cedula vacia");
+            }
+
+            if (string.IsNullOrEmpty(Password))
+            {
+                throw new Exception("Password vacia");
+            }
+            if (string.IsNullOrEmpty(Telefono))
+            {
+                throw new Exception("Telefono vacio");
+            }
+
         }
 
 
@@ -48,6 +62,6 @@ namespace Dominio
             return obj is Persona persona &&
                    Cedula == persona.Cedula;
         }
-        
+
     }
 }

@@ -199,7 +199,7 @@ namespace Dominio
             Persona p6 = new Persona("Elena*789", "Elena Martínez", "28765432", "25004433", "emartinez@gmail.com");
             AltaPersona(p6);
 
-            Persona p7 = new Persona("DiegoP88", "Diego Pereira", "43215678", "26107788", "dpereira@hotmail.com");
+            Persona p7 = new Persona("DiegoP88", "Diego Pereira", "1", "26107788", "dpereira@hotmail.com");
             AltaPersona(p7);
 
             Persona p8 = new Persona("Sofia#55", "Sofía Silva", "39871234", "27003322", "ssilva@yahoo.com");
