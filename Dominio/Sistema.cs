@@ -24,7 +24,7 @@ namespace Dominio
         }
 
 
-
+        //METODOS GET (Listas de clases)
         public List<Persona> GetPersonas()
         {
             return _personas;
@@ -46,9 +46,11 @@ namespace Dominio
         }
         //cédula de una persona dada es única,
         //el nombre no puede ser vacío y el email debe contener el símbolo “@”.
+
+        //METODOS ALTA
         public void AltaPersona(Persona p)
         {
-            if(p is null)
+            if (p is null)
             {
                 throw new Exception("Debe ingresar una persona");
             }
@@ -62,9 +64,9 @@ namespace Dominio
 
         public void AltaCuenta(Cuenta c)
         {
-            if(c is null)
+            if (c is null)
             {
-                   throw new Exception("Debe ingresar una cuenta");
+                throw new Exception("Debe ingresar una cuenta");
             }
             c.Validar();
             _cuentas.Add(c);
@@ -72,7 +74,7 @@ namespace Dominio
 
         public void AltaIncidente(Incidente i)
         {
-            if(i is null)
+            if (i is null)
             {
                 throw new Exception("Debe ingresar un incidente");
             }
@@ -82,7 +84,7 @@ namespace Dominio
 
         public void AltaActivo(Activo a)
         {
-            if(a is null)
+            if (a is null)
             {
                 throw new Exception("Debe ingresar un incidente");
             }
@@ -90,6 +92,10 @@ namespace Dominio
             _activos.Add(a);
         }
 
+
+        //////////////////////////////////
+
+        //METODO OBTENER ACTIVOS QUE CARECEN DE BACKUP
         public List<Activo> GetActivosSinBackup()
         {
             List<Activo> _activosSinBackUp = new List<Activo>();
@@ -105,6 +111,7 @@ namespace Dominio
 
         }
 
+        //METODO OBTENER ACTIVOS POR PERSONA
         public List<Activo> ObtenerActivosPorPersona(Persona p)
         {
             List<Activo> listaRet = new List<Activo>();
@@ -118,6 +125,7 @@ namespace Dominio
             return listaRet;
         }
 
+        //METODO OBTENER PERSONA POR CEDULA
         public Persona ObtenerPersonaPorCedula(String ci)
         {
             foreach (Persona p in _personas)
@@ -133,6 +141,8 @@ namespace Dominio
 
         }
 
+
+        //METODO OBTENER LISTA DE INCIDENTES DADA UNA PERSONA
         public List<Incidente> ListarIncidentesPorPersona(string ci)
         {
             if (string.IsNullOrEmpty(ci))
@@ -260,7 +270,7 @@ namespace Dominio
             Activo a2 = new Activo(c2, TipoActivo.SERVER, 5, "Servidor Web 01", true);
             AltaActivo(a2);
 
-            Activo a3 = new Activo(c3, TipoActivo.MOVIL, 3,"iPhone Gerencia", false);
+            Activo a3 = new Activo(c3, TipoActivo.MOVIL, 3, "iPhone Gerencia", false);
             AltaActivo(a3);
 
             Activo a4 = new Activo(c4, TipoActivo.PC, 2, "PC Recepción", true);
@@ -281,19 +291,19 @@ namespace Dominio
             Activo a9 = new Activo(c9, TipoActivo.MOVIL, 2, "Android Ventas", false);
             AltaActivo(a9);
 
-            Activo a10 = new Activo(c10, TipoActivo.PC, 3,  "PC RRHH", true);
+            Activo a10 = new Activo(c10, TipoActivo.PC, 3, "PC RRHH", true);
             AltaActivo(a10);
 
-            Activo a11 = new Activo(c11, TipoActivo.SERVER, 5,  "Servidor Backup", false);
+            Activo a11 = new Activo(c11, TipoActivo.SERVER, 5, "Servidor Backup", false);
             AltaActivo(a11);
 
-            Activo a12 = new Activo(c12, TipoActivo.PC, 3,  "Laptop Soporte", true);
+            Activo a12 = new Activo(c12, TipoActivo.PC, 3, "Laptop Soporte", true);
             AltaActivo(a12);
 
-            Activo a13 = new Activo(c1, TipoActivo.MOVIL, 4,  "iPad Directivo", false);
+            Activo a13 = new Activo(c1, TipoActivo.MOVIL, 4, "iPad Directivo", false);
             AltaActivo(a13);
 
-            Activo a14 = new Activo(c2, TipoActivo.PC, 1,  "PC Pasante", true);
+            Activo a14 = new Activo(c2, TipoActivo.PC, 1, "PC Pasante", true);
             AltaActivo(a14);
 
             Activo a15 = new Activo(c3, TipoActivo.SERVER, 5, "Servidor VPN", true);

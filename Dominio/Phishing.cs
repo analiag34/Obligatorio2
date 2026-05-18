@@ -21,7 +21,7 @@ namespace Dominio
 
         public override string ToString()
         {
-             return $"Incidente Phishing: \n- Activo Afectado: {ActivoAfectado}\n - Estado: {Estado}\n- Descripcion: {Descripcion}\n- Fecha de reporte: {FechaReportado}\n- Canal Usado: {CanalUsado}\n- Transferencia de Datos: {TransferenciaDatos}\n- Entregó Credenciales: {EntregoCredenciales}";
+            return $"Incidente Phishing: \n- Activo Afectado: {ActivoAfectado}\n - Estado: {Estado}\n- Descripcion: {Descripcion}\n- Fecha de reporte: {FechaReportado}\n- Canal Usado: {CanalUsado}\n- Transferencia de Datos: {TransferenciaDatos}\n- Entregó Credenciales: {EntregoCredenciales}";
         }
 
         public override void Validar()
@@ -34,17 +34,21 @@ namespace Dominio
             {
                 throw new Exception("El canal usado no puede ser vacío");
             }
-            if(Probabilidad < 1 || Probabilidad > 5)
+            if (Probabilidad < 1 || Probabilidad > 5)
             {
                 throw new Exception("La probabilidad debe ser un valor entre 1 y 5");
             }
-             if(Impacto < 1 || Impacto > 5)
+            if (Impacto < 1 || Impacto > 5)
             {
                 throw new Exception("El impacto debe ser un valor entre 1 y 5");
             }
-            if(ActivoAfectado is null)
+            if (ActivoAfectado is null)
             {
-                 throw new Exception("Debe ingresar un activo adectado");
+                throw new Exception("Debe ingresar un activo adectado");
+            }
+            if (FechaReportado > DateTime.Now)
+            {
+                throw new Exception("La fecha no puede ser posterior al dia de hoy");
             }
 
         }

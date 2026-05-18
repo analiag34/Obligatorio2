@@ -56,7 +56,7 @@ namespace Dominio
 
 
 
-
+        //SE SOBREESCRIBE METODO EQUALS PARA VALIDAR PERSONA POR CEDULA
         public override bool Equals(object? obj)
         {
             return obj is Persona persona &&

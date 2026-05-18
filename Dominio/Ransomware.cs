@@ -18,26 +18,30 @@ namespace Dominio
 
         public override string ToString()
         {
-             return $"Incidente Ransomware: \n- Activo Afectado: {ActivoAfectado}\n - Estado: {Estado}\n- Descripcion: {Descripcion}\n- Fecha de reporte: {FechaReportado}\n- Datos Encriptados: {DatosEncriptados}\n- Exfiltracion: {Exfiltracion}";
+            return $"Incidente Ransomware: \n- Activo Afectado: {ActivoAfectado}\n - Estado: {Estado}\n- Descripcion: {Descripcion}\n- Fecha de reporte: {FechaReportado}\n- Datos Encriptados: {DatosEncriptados}\n- Exfiltracion: {Exfiltracion}";
         }
 
-         public override void Validar()
+        public override void Validar()
         {
             if (string.IsNullOrEmpty(Descripcion))
             {
                 throw new Exception("La descripción no puede ser vacía");
             }
-            if(Probabilidad < 1 || Probabilidad > 5)
+            if (Probabilidad < 1 || Probabilidad > 5)
             {
                 throw new Exception("La probabilidad debe ser un valor entre 1 y 5");
             }
-             if(Impacto < 1 || Impacto > 5)
+            if (Impacto < 1 || Impacto > 5)
             {
                 throw new Exception("El impacto debe ser un valor entre 1 y 5");
             }
-            if(ActivoAfectado is null)
+            if (ActivoAfectado is null)
             {
-                 throw new Exception("Debe ingresar un activo adectado");
+                throw new Exception("Debe ingresar un activo adectado");
+            }
+            if (FechaReportado > DateTime.Now)
+            {
+                throw new Exception("La fecha no puede ser posterior al dia de hoy");
             }
         }
     }
