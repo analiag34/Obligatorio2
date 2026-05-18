@@ -38,16 +38,30 @@ namespace Dominio
                 throw new Exception("mail vacio o invalido");
             }
 
+            if (string.IsNullOrEmpty(Cedula))
+            {
+                throw new Exception("Cedula vacia");
+            }
+
+            if (string.IsNullOrEmpty(Password))
+            {
+                throw new Exception("Password vacia");
+            }
+            if (string.IsNullOrEmpty(Telefono))
+            {
+                throw new Exception("Telefono vacio");
+            }
+
         }
 
 
 
-
+        //SE SOBREESCRIBE METODO EQUALS PARA VALIDAR PERSONA POR CEDULA
         public override bool Equals(object? obj)
         {
             return obj is Persona persona &&
                    Cedula == persona.Cedula;
         }
-        
+
     }
 }

@@ -8,7 +8,7 @@ namespace UIAppObligatorio
         {
             Sistema sistema = new Sistema();
 
-
+            //MENU DE OPCIONES EN CONSOLA
             int op = -1;
             while (op != 0)
             {
@@ -20,6 +20,7 @@ namespace UIAppObligatorio
                 Console.WriteLine("0 - Salir");
 
                 op = int.Parse(Console.ReadLine());
+
 
                 if (op == 1)
                 {
@@ -120,9 +121,6 @@ namespace UIAppObligatorio
                 }
 
                 Console.ReadKey();
-
-
-
 
 
 

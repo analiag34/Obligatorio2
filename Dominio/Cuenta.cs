@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Dominio
 {
-    public class Cuenta
+    public class Cuenta : IValidar //SE ASOCIA CLASE DE INTERFAZ
     {
         private static int UltimoId { get; set; } = 1;
 
@@ -21,11 +21,16 @@ namespace Dominio
             FechaUltCambioPass = fechaUltCambioPass;
         }
 
+        //METODO DE IVALIDAR APLICADO A CUENTA
         public void Validar()
         {
-            if(Titular is null)
+            if (Titular is null)
             {
                 throw new Exception("Debe ingresar una persona como titular");
+            }
+            if (FechaUltCambioPass > DateTime.Now)
+            {
+                throw new Exception("La fecha no puede ser posterior al dia de hoy");
             }
         }
 
