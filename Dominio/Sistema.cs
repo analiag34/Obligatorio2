@@ -57,7 +57,7 @@ namespace Dominio
             p.Validar();
             if (_personas.Contains(p))
             {
-                throw new Exception("ya existe");
+                throw new Exception("Ya existe una persona registrada con esa cédula");
             }
             _personas.Add(p);
         }

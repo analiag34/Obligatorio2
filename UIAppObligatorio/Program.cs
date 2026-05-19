@@ -16,7 +16,7 @@ namespace UIAppObligatorio
                 Console.WriteLine("1 - Listar todas las personas con sus respectivos activos");
                 Console.WriteLine("2 - Listar los incidentes de una persona");
                 Console.WriteLine("3 - Alta Persona");
-                Console.WriteLine("4 - Alta de cedctivos que carecen de backup ");
+                Console.WriteLine("4 - Alta de activos que carecen de backup ");
                 Console.WriteLine("0 - Salir");
 
                 op = int.Parse(Console.ReadLine());
