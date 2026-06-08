@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
+using System.Runtime.CompilerServices;
 
 namespace Dominio
 {
@@ -17,9 +18,19 @@ namespace Dominio
         private List<Cuenta> _cuentas = new List<Cuenta>();
         private List<Activo> _activos = new List<Activo>();
 
+        private static Sistema instance = null;
+
+        public static Sistema Instance()
+        {
+            if (instance == null)
+            {
+                instance = new Sistema();
+            }
+            return instance;
+        }
+
         public Sistema()
         {
-
             Precargar();
         }
 
@@ -412,10 +423,6 @@ namespace Dominio
 
 
         }
-
-
-
-
 
 
     }

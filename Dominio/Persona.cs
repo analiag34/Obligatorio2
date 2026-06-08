@@ -16,6 +16,7 @@ namespace Dominio
         public string Cedula { get; set; }
         public string Telefono { get; set; }
         public string Email { get; set; }
+        public string Rol { get; set; }
 
         public Persona(string password, string nombre, string cedula, string telefono, string email)
         {
@@ -25,6 +26,12 @@ namespace Dominio
             Cedula = cedula;
             Telefono = telefono;
             Email = email;
+            Rol = "Operador";
+        }
+
+        public Persona()
+        {
+            id = UltimoId++;
         }
 
         public void Validar()
