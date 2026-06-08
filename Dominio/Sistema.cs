@@ -73,6 +73,19 @@ namespace Dominio
             _personas.Add(p);
         }
 
+        public Persona VerificarExistencia(string email, string pass)
+        {
+            foreach (Persona p in _personas)
+            {
+
+                if (p.Email.Equals(email) && p.Password.Equals(pass))
+                {
+                    return p;
+                }
+            }
+            return null;
+        }
+
         public void AltaCuenta(Cuenta c)
         {
             if (c is null)

@@ -14,6 +14,8 @@ namespace Web.Controllers
         }
 
         [HttpPost]
+
+        ///TODO Alta persona o alta cuenta si la persona existe??
         public IActionResult Create(Persona nueva)
         {
             try

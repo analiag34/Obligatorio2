@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Dominio;
+using Microsoft.AspNetCore.Mvc;
 using Web.Models;
 
 namespace Web.Controllers
 {
     public class AuthController : Controller
     {
+        Sistema s = Sistema.Instance();
         public IActionResult Login()
         {
             return View();
@@ -14,11 +16,30 @@ namespace Web.Controllers
 
         public IActionResult Login(LoginViewModel lvm)
         {
-            return View();
+            Persona buscada = s.VerificarExistencia(lvm.Email, lvm.Password);
+            if (buscada is null)
+            {
+                ViewBag.msg = "Credenciales incorrectas";
+                return View();
+            }
+            else
+            {
+                HttpContext.Session.SetInt32("LogueadoId", buscada.id);
+                HttpContext.Session.SetString("LogueadoNombre", buscada.Nombre);
+                HttpContext.Session.SetString("LogueadoRol", buscada.Rol);
+                return RedirectToAction("Index", "Home"); 
+
+            }
+
+          
         }
+
         public IActionResult Logout()
         {
-            return View();
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index", "Home");
         }
+
+
     }
 }

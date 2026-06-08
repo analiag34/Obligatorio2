@@ -8,7 +8,7 @@ namespace Web
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-
+            builder.Services.AddSession();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -23,7 +23,7 @@ namespace Web
             app.UseRouting();
 
             app.UseAuthorization();
-
+            app.UseSession();
             app.MapStaticAssets();
             app.MapControllerRoute(
                 name: "default",
