@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@{
+    int? lid = Context.Session.GetInt32("LogueadoId");
+    string lrol = Context.Session.GetString("LogueadoRol");
+}
+
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -23,9 +30,56 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
+
+                        @if (lid == null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Login">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Persona" asp-action="Create">Registro</a>
+                            </li>
+                            @* Acá van los botones que ve el deslogueado *@
+
+
+                        }
+                        else
+                        {
+                            @* Acá van los botones que ven los dos roles *@
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Logout">Logout</a>
+                            </li> 
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Persona" asp-action="VerPerfil">Ver Perfil</a>
+                            </li>
+                            
+
+                              
+                            if (lrol == "Administrador")
+                            {
+                                @* acá van los botones que ve solo el admin *@
+                                <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Persona" asp-action="Index">Ver Usuarios</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="nav-item">
+                                @* acá van los botones que ve solo el cliente *@
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Activo" asp-action="Index">Ver mis activos</a>
+                                </li>
+                            }
+
+                        }
+
+
+
+
+
+
+
+
                     </ul>
                 </div>
             </div>

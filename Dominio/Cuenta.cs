@@ -11,7 +11,7 @@ namespace Dominio
         public int Id { get; set; }
         public bool MFA { get; set; }
         public Persona Titular { get; set; }
-        public DateTime FechaUltCambioPass { get; set; }
+        public DateTime? FechaUltCambioPass { get; set; }
 
         public Cuenta(bool mFA, Persona titular, DateTime fechaUltCambioPass)
         {

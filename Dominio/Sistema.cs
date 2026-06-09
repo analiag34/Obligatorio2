@@ -150,7 +150,7 @@ namespace Dominio
         }
 
         //METODO OBTENER PERSONA POR CEDULA
-        public Persona ObtenerPersonaPorCedula(String ci)
+        public Persona ObtenerPersonaPorCedula(String ci) 
         {
             foreach (Persona p in _personas)
             {
@@ -164,6 +164,26 @@ namespace Dominio
 
 
         }
+
+        public Persona ObtenerPersonaPorId(int id)
+        {
+            foreach (Persona p in _personas)
+            {
+                if (p.id.Equals(id))
+                {
+                    return p;
+                }
+
+            }
+            return null;
+
+            
+
+
+        }
+
+
+
 
 
         //METODO OBTENER LISTA DE INCIDENTES DADA UNA PERSONA
@@ -205,6 +225,16 @@ namespace Dominio
             return listaRetorno;
         }
 
+        public List<Cuenta> ObtenerCuentasPorIdPersona(int id)
+        {
+            List<Cuenta> ret = new List<Cuenta>();
+            foreach(Cuenta c in _cuentas)
+            {
+                if (c.Id.Equals(id))
+                    ret.Add(c);
+            }
+            return ret;
+        }
 
 
         //Precarga de datos hecho con Gemini

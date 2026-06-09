@@ -1,0 +1,39 @@
+﻿@using Dominio
+@model Persona
+
+
+
+
+    <div class="col">
+        <div class="card h-100 shadow-sm">
+
+
+            <div class="card-body">
+                <h5 class="card-title">@Model.Nombre</h5>
+
+                <p class="card-text">
+                    email: @Model.Email
+                </p>
+                <p class="card-text">
+                    telefono: @Model.Telefono
+                </p>
+               
+            </div>
+
+            <div class="card-footer">
+                <small class="text-muted">
+                    @Model.Rol
+                </small>
+            </div>
+
+        </div>
+    </div>
+
+    <h3>Mis cuentas</h3>
+@foreach (var cuenta in ViewBag.cuentas)
+{
+    <p>@cuenta.Id</p>
+    <p>@cuenta.MFA</p>
+}
+
+
